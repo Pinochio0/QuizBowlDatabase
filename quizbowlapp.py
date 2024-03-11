@@ -1,6 +1,11 @@
 import sqlite3
 import random
 
+GREEN = '\033[92m'
+RED = '\033[91m'
+RESET = '\033[0m'
+
+
 # Connect to the database
 conn = sqlite3.connect('quiz_database.db')
 c = conn.cursor()
@@ -47,9 +52,9 @@ for question_data in questions:
 
     # Check if the answer is correct
     if user_answer.lower() == answer.lower():
-        print("Correct!")
+        print(GREEN + "Correct!" + RESET)
     else:
-        print("Incorrect. The correct answer is:", answer)
+        print(RED + "Incorrect. The correct answer is:", answer + RESET)
 
 # Close connection
 conn.close()
